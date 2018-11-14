@@ -1,9 +1,6 @@
 async-generator==1.10
-pyaes==1.6.1
-pyasn1==0.4.4
 python-dateutil==2.7.5
 python-dotenv==0.9.1
 redis==2.10.6
-rsa==4.0
-six==1.11.0
+schedule==0.5.0
 Telethon==1.4.1
