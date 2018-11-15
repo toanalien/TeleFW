@@ -30,7 +30,7 @@ STRING_SESSION = os.getenv('STRING_SESSION')
 log = open('runtime.log', 'a+')
 
 if not STRING_SESSION: 
-    log.write("{}\tString session not found".format(datetime.datetime.now()))
+    log.write("{}\tString session not found\n".format(datetime.datetime.now()))
     raise SystemExit()
 
 # REDIS CONFIG
@@ -76,7 +76,7 @@ def job():
             r.set('last_push', str(datetime.datetime.now().astimezone(local_tz)))
             offset = id
 
-    log.write("{} Done".format(str(datetime.datetime.now())))
+    log.write("{} Done\n".format(str(datetime.datetime.now())))
     log.close()
 
 schedule.every(1).minutes.do(job)
