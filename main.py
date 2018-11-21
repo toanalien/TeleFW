@@ -27,12 +27,6 @@ CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 RECEIVER_ID = int(os.getenv('RECEIVER_ID'))
 STRING_SESSION = os.getenv('STRING_SESSION')
 
-log = open('runtime.log', 'a+')
-
-if not STRING_SESSION: 
-    log.write("{}\tString session not found\n".format(datetime.datetime.now()))
-    raise SystemExit()
-
 # REDIS CONFIG
 REDIS_HOST = os.getenv('REDIS_HOST')
 REDIS_PASS = os.getenv('REDIS_PASS')
@@ -45,6 +39,12 @@ channel = PeerChannel(channel_id=CHANNEL_ID)
 receiver = PeerUser(RECEIVER_ID)
 
 def job():
+    log = open('runtime.log', 'a+')
+
+    if not STRING_SESSION: 
+        log.write("{}\tString session not found\n".format(datetime.datetime.now()))
+        raise SystemExit()
+    
     client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
     client.start()
 
